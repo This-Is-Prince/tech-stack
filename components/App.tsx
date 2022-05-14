@@ -279,7 +279,26 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
    * GoLang
    */
   // GoLang Geometry
-  const node_js_Geometry = new TextGeometry("GoLang", {
+  const golang_Geometry = new TextGeometry("GoLang", {
+    font,
+    size,
+    height,
+    curveSegments: 12,
+  });
+  golang_Geometry.center();
+  golang_Geometry.translate(0, size / 2, 0);
+  // GoLang Mesh
+  const golang_Mesh = new THREE.Mesh(golang_Geometry, evenMaterial);
+  golang_Mesh.position.y = size * 5;
+  golang_Mesh.rotateY(-Math.PI * 0.1);
+  golang_Mesh.castShadow = true;
+  golang_Mesh.receiveShadow = true;
+
+  /**
+   * Node.js
+   */
+  // Node.js Geometry
+  const node_js_Geometry = new TextGeometry("Node", {
     font,
     size,
     height,
@@ -287,12 +306,50 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
   });
   node_js_Geometry.center();
   node_js_Geometry.translate(0, size / 2, 0);
-  // GoLang Mesh
-  const node_js_Mesh = new THREE.Mesh(node_js_Geometry, evenMaterial);
-  node_js_Mesh.position.y = size * 5;
+  // Node.js Mesh
+  const node_js_Mesh = new THREE.Mesh(node_js_Geometry, oddMaterial);
+  node_js_Mesh.position.y = size * 6;
   node_js_Mesh.rotateY(-Math.PI * 0.1);
   node_js_Mesh.castShadow = true;
   node_js_Mesh.receiveShadow = true;
+
+  /**
+   * Node.js
+   */
+  // Node.js Geometry
+  const tailwind_css_Geometry = new TextGeometry("Tailwind CSS", {
+    font,
+    size,
+    height,
+    curveSegments: 12,
+  });
+  tailwind_css_Geometry.center();
+  tailwind_css_Geometry.translate(0, size / 2, 0);
+  // Node.js Mesh
+  const tailwind_css_Mesh = new THREE.Mesh(tailwind_css_Geometry, evenMaterial);
+  tailwind_css_Mesh.position.y = size * 7;
+  tailwind_css_Mesh.rotateY(-Math.PI * 0.1);
+  tailwind_css_Mesh.castShadow = true;
+  tailwind_css_Mesh.receiveShadow = true;
+
+  /**
+   * Node.js
+   */
+  // Node.js Geometry
+  const next_js_Geometry = new TextGeometry("Next", {
+    font,
+    size,
+    height,
+    curveSegments: 12,
+  });
+  next_js_Geometry.center();
+  next_js_Geometry.translate(0, size / 2, 0);
+  // Node.js Mesh
+  const next_js_Mesh = new THREE.Mesh(next_js_Geometry, oddMaterial);
+  next_js_Mesh.position.y = size * 8;
+  next_js_Mesh.rotateY(-Math.PI * 0.1);
+  next_js_Mesh.castShadow = true;
+  next_js_Mesh.receiveShadow = true;
 
   scene.add(
     cssMesh,
@@ -301,7 +358,10 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
     three_js_Mesh,
     reactMesh,
     blenderMesh,
-    node_js_Mesh
+    golang_Mesh,
+    node_js_Mesh,
+    tailwind_css_Mesh,
+    next_js_Mesh
   );
 });
 
@@ -381,7 +441,7 @@ updateSizes();
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, aspectRatio(), 0.1, 100);
-camera.position.set(0, 2, 5);
+camera.position.set(-1, 5, 6);
 scene.add(camera);
 
 /**
